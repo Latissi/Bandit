@@ -6,6 +6,11 @@
 
 package bandit;
 
+import bandit.View.Fenster;
+import bandit.controller.Adapter;
+import bandit.controller.Controller;
+import bandit.model.Application;
+
 /**
  * Builder Class
  * @author nobody
@@ -14,6 +19,14 @@ public class Bandit
 {
   public Bandit()
   {
+      Fenster frm = new Fenster();
+      Application app = new Application();
+      Adapter adp = new Adapter(app, frm);
+      Controller cntrl = new Controller(app,frm);
+      adp.registerEvents();
+      cntrl.registerEvents();
+      frm.setVisible(true);
+      
 
   }
 
