@@ -53,12 +53,25 @@ public class OhmLogger
       FileHandler fh = new FileHandler(datei);
       ConsoleHandler ch = new ConsoleHandler();
       
+      fh.setFormatter(new OhmFormatter());
+      
       logger.addHandler(fh);
       
       ch.setFormatter(new OhmFormatter());
       
       logger.addHandler(ch);
-      logger.setLevel(new Level(level, ));
+      switch(level){
+          case "ALL": logger.setLevel(Level.ALL);break;
+          case "CONFIG": logger.setLevel(Level.CONFIG);break;
+          case "FINE" : logger.setLevel(Level.FINE);break;
+          case "FINER": logger.setLevel(Level.FINER);break;
+          case "FINEST": logger.setLevel(Level.FINEST);break;
+          case "INFO": logger.setLevel(Level.INFO);break;
+          case "OFF": logger.setLevel(Level.OFF); break;
+          case "SEVERE": logger.setLevel(Level.SEVERE);break;
+          case "WARNING": logger.setLevel(Level.WARNING);break;
+          default: logger.setLevel(Level.ALL);break;
+      }
     }
     catch(IOException ix)
     {
